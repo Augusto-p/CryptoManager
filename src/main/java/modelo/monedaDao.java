@@ -43,13 +43,16 @@ public class monedaDao {
 		Connection con = Conexion.getConexion();
 		ArrayList<MonedaEntidad> listaMonedas = new ArrayList<MonedaEntidad>();
 		try {
-			PreparedStatement ps = con.prepareStatement("select * from moneda");
+			PreparedStatement ps = con.prepareStatement("select nick,nombre, logo, sum(cant_mon) as \"Cantidad\" , avg(prec_tot/cant_mon) as \"PP\" , (select (prec_tot/cant_mon) where fecha=max(fecha)) as \"PUC\" from trans left join moneda on nick_mon = nick where id_tipo=1 group by nick_mon, id_tipo;");
 			ResultSet resultado = ps.executeQuery();
 			while (resultado.next()) {
 				String nick = resultado.getString("nick");
 				String name = resultado.getString("nombre");
 				String img = resultado.getString("logo");
-				MonedaEntidad MonedaDao = new MonedaEntidad(nick,name,img);
+				double Cantidad = resultado.getDouble("Cantidad");
+				double PrecioPromedio = resultado.getDouble("PP");
+				double PUP = resultado.getDouble("PUC");
+				MonedaEntidad MonedaDao = new MonedaEntidad(nick, name, img, Cantidad, PrecioPromedio, PUP);
 				listaMonedas.add(MonedaDao);
 			}
 		} catch (SQLException e) {
