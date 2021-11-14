@@ -17,11 +17,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 public class scraping {
-	public static int getdata(String NIK) throws IOException {
+	public int getdataScraping(String NIK) throws IOException {
 		int R = 0; // r = 0 (no se encontro nada) | R = 1 (se enconto solo el nombre) | R = 2 (se encontro todo)
-		String Name = GetName(NIK);
+		String Name = getNameScraping(NIK);
 		if (Name != "ERROR") {
-			InputStream img = getImagen(Name.toLowerCase());
+			byte[] img = getImagenScraping(Name.toLowerCase());
 			R = 1;
 			if (img != null) {
 				R = 2;
@@ -33,7 +33,7 @@ public class scraping {
 		
 	}
 	
-	public static InputStream getImagen(String name) throws IOException {
+	public byte[] getImagenScraping(String name) throws IOException {
 		String url = "https://crypto.com/price/"+ name;
 		Document page = Jsoup.connect(url).get();
 		Elements div = page.select("div[class='css-42e2b4']");
@@ -51,7 +51,7 @@ public class scraping {
             byte[] icono = new byte[(int) imagen.length()];
             InputStream input = new FileInputStream(imagen);
             input.read(icono);
-            return input;
+            return icono;
         } catch (Exception ex) {
             return null;
         }
@@ -60,7 +60,7 @@ public class scraping {
 	}
 	
 	
-	public static String GetName(String NIK) {
+	public String getNameScraping(String NIK) {
 		String url = "https://api.exchange.cryptomkt.com/api/3/public/currency/"+ NIK;
 		String name = "ERROR";
 		try {
@@ -75,7 +75,7 @@ public class scraping {
 		
 	}
 	
-	public static String returnHttpGet(String urlParaVisitar) throws Exception {
+	public String returnHttpGet(String urlParaVisitar) throws Exception {
 		StringBuilder resultado = new StringBuilder();
 		URL url = new URL(urlParaVisitar);
 		HttpURLConnection conexion = (HttpURLConnection) url.openConnection();

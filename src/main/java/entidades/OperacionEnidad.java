@@ -5,18 +5,21 @@ public class OperacionEnidad {
 	private String nik;
 	private double cantidad;
 	private double price;
-	
-	public OperacionEnidad(int id, String nik, double cantidad, double price) {
-		this.id = id;
-		this.nik = nik;
-		this.cantidad = cantidad;
-		this.price = price;
-	}
-	public OperacionEnidad(String nik, double cantidad, double price) {
+	private String Fecha;
+	private int mode;
+	public OperacionEnidad(String nik, double cantidad, double price, int mode) {
 		super();
 		this.nik = nik;
 		this.cantidad = cantidad;
 		this.price = price;
+		this.mode = mode;
+	}
+	
+	public int getMode() {
+		return mode;
+	}
+	public void setMode(int mode) {
+		this.mode = mode;
 	}
 	public int getId() {
 		return id;
