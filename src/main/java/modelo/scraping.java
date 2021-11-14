@@ -10,7 +10,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Base64;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,7 +23,7 @@ public class scraping {
 		int R = 0; // r = 0 (no se encontro nada) | R = 1 (se enconto solo el nombre) | R = 2 (se encontro todo)
 		String Name = getNameScraping(NIK);
 		if (Name != "ERROR") {
-			byte[] img = getImagenScraping(Name.toLowerCase());
+			String img = getImagenScraping(Name.toLowerCase());
 			R = 1;
 			if (img != null) {
 				R = 2;
@@ -33,29 +35,25 @@ public class scraping {
 		
 	}
 	
-	public byte[] getImagenScraping(String name) throws IOException {
+	public String getImagenScraping(String name) throws IOException {
 		String url = "https://crypto.com/price/"+ name;
 		Document page = Jsoup.connect(url).get();
 		Elements div = page.select("div[class='css-42e2b4']");
 		String img = (div.select("img[src]").get(1)).absUrl("src");
+		String base64 = null;
 		try (BufferedInputStream inputStream = new BufferedInputStream(new URL(img).openStream());
-				  FileOutputStream fileOS = new FileOutputStream("src/img/logo.png")) {
-				    byte data[] = new byte[1024];
-				    int byteContent;
-				    while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
-				        fileOS.write(data, 0, byteContent);
-				    }
+			    FileOutputStream fileOS = new FileOutputStream("src/img/logo.png")) {
+			    byte data[] = new byte[1024];
+				int byteContent;
+				while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
+					fileOS.write(data, 0, byteContent);
+					    }
 		} catch (IOException e) {}
-		File imagen = new File("C:\\Users\\nahuel\\Desktop\\911.jpg");
-        try {
-            byte[] icono = new byte[(int) imagen.length()];
-            InputStream input = new FileInputStream(imagen);
-            input.read(icono);
-            return icono;
-        } catch (Exception ex) {
-            return null;
-        }
-		
+       
+        File image = new File("src/img/logo.png");
+        base64 = new String(Base64.getEncoder().encode(FileUtils.readFileToByteArray(image)), "UTF-8");
+        image.delete();
+        return base64;
 		
 	}
 	

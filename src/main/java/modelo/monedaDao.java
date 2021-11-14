@@ -17,7 +17,7 @@ public class monedaDao {
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setString(1, mone.getNik());
 			ps.setString(2, mone.getName());
-			ps.setBytes(3, mone.getImg());
+			ps.setString(3, mone.getImg());
 			
 			// resultado = ps.executeUpdate();
 			if (ps.executeUpdate() > 0) {
@@ -48,7 +48,7 @@ public class monedaDao {
 			while (resultado.next()) {
 				String nick = resultado.getString("nick");
 				String name = resultado.getString("nombre");
-				byte[] img = resultado.getBytes("logo");
+				String img = resultado.getString("logo");
 				MonedaEntidad MonedaDao = new MonedaEntidad(nick,name,img);
 				listaMonedas.add(MonedaDao);
 			}
