@@ -43,16 +43,16 @@ public class monedaDao {
 		Connection con = Conexion.getConexion();
 		ArrayList<MonedaEntidad> listaMonedas = new ArrayList<MonedaEntidad>();
 		try {
-			PreparedStatement ps = con.prepareStatement("select nick,nombre, logo, sum(cant_mon) as \"Cantidad\" , avg(prec_tot/cant_mon) as \"PP\" , (select (prec_tot/cant_mon) where fecha=max(fecha)) as \"PUC\" from trans left join moneda on nick_mon = nick where id_tipo=1 group by nick_mon, id_tipo;");
+			PreparedStatement ps = con.prepareStatement("select m.nick,m.nombre, m.logo,sum(t.cant_mon * case when tp.nombre =\"compra\" then 1 else -1 end ) as \"Cantidad\",avg(t.prec_tot * case when tp.nombre =\"compra\" then 1 else 0 end /t.cant_mon * case when tp.nombre =\"compra\" then 1 else 0 end ) as \"PPC\" ,avg(t.prec_tot * case when tp.nombre =\"compra\" then 0 else 1 end /t.cant_mon * case when tp.nombre =\"compra\" then 0 else 1 end ) as \"PPV\" from trans as t left join moneda as m on t.nick_mon = m.nick left join tp_trans as tp on t.id_tipo = tp.id_tipo group by nick_mon;");
 			ResultSet resultado = ps.executeQuery();
 			while (resultado.next()) {
 				String nick = resultado.getString("nick");
 				String name = resultado.getString("nombre");
 				String img = resultado.getString("logo");
 				double Cantidad = resultado.getDouble("Cantidad");
-				double PrecioPromedio = resultado.getDouble("PP");
-				double PUP = resultado.getDouble("PUC");
-				MonedaEntidad MonedaDao = new MonedaEntidad(nick, name, img, Cantidad, PrecioPromedio, PUP);
+				double PPC = resultado.getDouble("PPV");
+				double PPV = resultado.getDouble("PPV");
+				MonedaEntidad MonedaDao = new MonedaEntidad(nick, name, img, Cantidad, PPC, PPV);
 				listaMonedas.add(MonedaDao);
 			}
 		} catch (SQLException e) {

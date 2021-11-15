@@ -7,10 +7,11 @@ public class OperacionEnidad {
 	private double cantidad;
 	private double price;
 	private String fecha;
-	private int mode;
+	private String mode;
 	private double precio_uni;
+	private String nombre;
 	
-	public OperacionEnidad(String nik, double cantidad, double price, int mode) {
+	public OperacionEnidad(String nik, double cantidad, double price, String mode) {
 		super();
 		this.nik = nik;
 		this.cantidad = cantidad;
@@ -18,8 +19,10 @@ public class OperacionEnidad {
 		this.mode = mode;
 	}
 
-	public OperacionEnidad(int id, String img, String nik, double cantidad, double price, String fecha, int mode,
-			double precio_uni) {
+	
+
+	public OperacionEnidad(int id, String img, String nik, double cantidad, double price, String fecha, String mode,
+			double precio_uni, String nombre) {
 		super();
 		this.id = id;
 		this.img = img;
@@ -29,7 +32,22 @@ public class OperacionEnidad {
 		this.fecha = fecha;
 		this.mode = mode;
 		this.precio_uni = precio_uni;
+		this.nombre = nombre;
 	}
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -79,11 +97,11 @@ public class OperacionEnidad {
 		this.fecha = fecha;
 	}
 
-	public int getMode() {
+	public String getMode() {
 		return mode;
 	}
 
-	public void setMode(int mode) {
+	public void setMode(String mode) {
 		this.mode = mode;
 	}
 

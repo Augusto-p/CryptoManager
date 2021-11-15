@@ -11,7 +11,7 @@ import entidades.OperacionEnidad;
 
 public class TransacionDao {
 
-	public int agregarCliente(OperacionEnidad ope) {
+	public int agregarTrasacion(OperacionEnidad ope) {
 		Connection con = Conexion.getConexion();
 		int resultado = -1;
 
@@ -19,7 +19,7 @@ public class TransacionDao {
 			PreparedStatement ps = con.prepareStatement("insert into trans (id_tipo, fecha, nick_mon, cant_mon, prec_tot) values (?,?, ?, ?, ?);",
 					
 					PreparedStatement.RETURN_GENERATED_KEYS);
-			ps.setInt(1, ope.getMode());
+			ps.setString(1, ope.getMode());
 			ps.setString(2, FuncionesVarias.getDateTime());
 			ps.setString(3, ope.getNik());
 			ps.setDouble(4, ope.getCantidad());
@@ -54,7 +54,7 @@ public class TransacionDao {
 		Connection con = Conexion.getConexion();
 		ArrayList<OperacionEnidad> listaOperaciones = new ArrayList<OperacionEnidad>();
 		try {
-			PreparedStatement ps = con.prepareStatement("select id_trans as ID,id_tipo as modo, logo, nick, nombre, cant_mon as \"Cantidad\", prec_tot as \"Precio Total\", (prec_tot/cant_mon) as \"Precio Unitario\", fecha from trans left join moneda on nick_mon = nick;");
+			PreparedStatement ps = con.prepareStatement("select t.id_trans as ID, tp.nombre as modo, m.logo, m.nick, m.nombre, t.cant_mon as \"Cantidad\",prec_tot as \"Precio Total\", (prec_tot/cant_mon) as \"Precio Unitario\", fecha from trans as t left join moneda as m on t.nick_mon = m.nick left join tp_trans as tp on t.id_tipo = tp.id_tipo;");
 			ResultSet resultado = ps.executeQuery();
 			while (resultado.next()) {
 				int id = resultado.getInt("ID");
@@ -64,9 +64,9 @@ public class TransacionDao {
 				double Cantidad = resultado.getDouble("Cantidad");
 				double PT = resultado.getDouble("Precio Total");
 				double PU = resultado.getDouble("Precio Unitario");
-				int mode = resultado.getInt("modo");
+				String mode = resultado.getString("modo");
 				String date = resultado.getString("fecha");
-				OperacionEnidad opreacionDao = new OperacionEnidad(id, img, nick, Cantidad, PT, date, mode, PU);
+				OperacionEnidad opreacionDao = new OperacionEnidad(id, img, nick, Cantidad, PT, date, mode, PU, nombre);
 				listaOperaciones.add(opreacionDao);
 			}
 		} catch (SQLException e) {
