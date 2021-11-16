@@ -1,36 +1,35 @@
-*{
+body{
 	background:#4b5a69 ;
 }
 table{
 	box-shadow: 0px 0px 15px 0 #000000;
 	border-radius: 15px;	
 	background:#4c81b5;
+	margin: 0 auto;
 }
 th{
 	text-align: center;
 	border-radius: 15px;
 	background:#4c81b5;
+	color : #ffffff;
+	font-size: 20px;
+	
 }
 td{
 	background:#4c81b5;
 	border-radius: 15px;
+	
 }
 #coin{
-	padding-top: 5px;
-	text-align: center;
-	height: 30px;
-	margin-top: 10px;
-	display: inline-block;
-	text-decoration: none;
-	color: black;
-	width: 90px;
 	border-radius: 90% 0 0 90%;
-	border: solid black 1px;
-	background: #224f7c;
 	box-shadow: 0 0 15px 0 ;
 }
 #opp{
-	box-shadow: 0 0 10px 0 ;
+	border-radius: 0 50% 50% 0;
+	background:#4c81b5;
+}
+.butts a{
+	width: 90px;
 	padding-top: 5px;
 	height: 30px;
 	text-align: center;
@@ -38,11 +37,38 @@ td{
 	display: inline-block;
 	text-decoration: none;
 	color: black;
-	width: 90px;
-	border-radius: 0 50% 50% 0;
 	border: solid black 1px;
-	background:#4c81b5;
+
 }
 .butts{
-	margin-top: 15px;
+	margin: 0 auto;
+	
+}
+.baner{
+	display: flex;
+	margin-bottom: 10px;
+}
+.baner div{
+	margin: 0 auto;
+	background: none;
+	text-align: center;
+}
+h1{
+	color: white;
+}
+.baner h2{
+	color: white;
+
+}
+tr{
+	text-align: center;
+	border: none;
+}
+
+.Botones{
+	display: flex;
+	width: 100%;
+	bottom: 20px;
+	position: fixed;
+	
 }
