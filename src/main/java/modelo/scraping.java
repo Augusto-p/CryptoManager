@@ -40,7 +40,6 @@ public class scraping {
 		Document page = Jsoup.connect(url).get();
 		Elements div = page.select("div[class='css-42e2b4']");
 		String img = (div.select("img[src]").get(1)).absUrl("src");
-		String base64 = null;
 		try (BufferedInputStream inputStream = new BufferedInputStream(new URL(img).openStream());
 			    FileOutputStream fileOS = new FileOutputStream("src/img/logo.png")) {
 			    byte data[] = new byte[1024];
@@ -50,9 +49,7 @@ public class scraping {
 					    }
 		} catch (IOException e) {}
        
-        File image = new File("src/img/logo.png");
-        base64 = new String(Base64.getEncoder().encode(FileUtils.readFileToByteArray(image)), "UTF-8");
-        image.delete();
+        String base64 = FuncionesVarias.getbase64img("src/img/logo.png");
         return base64;
 		
 	}
