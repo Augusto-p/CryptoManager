@@ -1,0 +1,8 @@
+<Context>
+	<Resource name="jdbc/Productos" auth="Container" type="javax.sql.DataSource"
+	maxActive="15" maxIdle="3" maxWait="5000" 
+	username="root" password=""
+	driverClassName="com.mysql.cj.jdbc.Driver"
+	url="jdbc:mysql://127.0.0.1:3306/Cryptomanager?useUnicode=true;useJDBCCompliantTimezoneShift=true;useLegacyDatetimeCode=falseserverTimezone=UTC">
+	</Resource>
+</Context>
