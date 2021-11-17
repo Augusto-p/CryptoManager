@@ -1,67 +1,77 @@
-body{
-	background:#4b5a69 ;
+body {
+    background: #222;
 }
-#coin{
-	border-radius: 90% 0 0 90%;
-	box-shadow: 0 0 15px 0 ;
-}
-#opp{
-	border-radius: 0 50% 50% 0;
-	background:#4c81b5;
-}
-.butts a{
-	width: 90px;
-	padding-top: 5px;
-	height: 30px;
-	text-align: center;
-	margin-top: 10px;
-	display: inline-block;
-	text-decoration: none;
-	color: black;
-	border: solid black 1px;
 
+#coin {
+    border-radius: 90% 0 0 90%;
 }
-.butts{
-	margin: 0 auto;
-	
-}
-.baner{
-	display: flex;
-	margin-bottom: 5px;
-}
-.baner div{
-	margin: 0 auto;
-	background: none;
-	text-align: center;
-}
-h1{
-	color: white;
-}
-.baner h2{
-	color: white;
 
+#opp {
+    border-radius: 0 50% 50% 0;
+    background: #4c81b5;
 }
-.Botones{
-	display: flex;
-	width: 100%;
-	bottom: 20px;
-	position: fixed;
-	
+
+.butts a {
+    width: 90px;
+    padding-top: 5px;
+    height: 30px;
+    text-align: center;
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
 }
-.container-table100{
-	background: none;
-	margin-top: 0px;
+
+.butts {
+    margin: 0 auto;
 }
-.limiter{
-	margin-top: 0px;
-	width: 100%;
+
+.baner {
+    display: flex;
+    margin-bottom: 5px;
 }
+
+.baner div {
+    margin: 0 auto;
+    background: none;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+}
+
+.baner h2 {
+    color: white;
+}
+
+.Botones {
+    display: flex;
+    width: 100%;
+    bottom: 20px;
+    position: fixed;
+}
+
 .container-table100 {
-	padding-top: 0px;
+    background: none;
+    margin-top: 0px;
 }
+
+.limiter {
+    margin-top: 0px;
+    width: 100%;
+}
+
+.container-table100 {
+    padding-top: 0px;
+}
+
 .table100-body {
     max-height: 415px;
 }
-th, td{
-	text-align: center;
+
+th,
+td {
+    text-align: center;
 }

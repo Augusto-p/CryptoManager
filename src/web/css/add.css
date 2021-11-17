@@ -1,12 +1,9 @@
-#coin {
+label {
     color: white;
-    background: #1f1f1f;
-    box-shadow: 0 0 15px 0 black;
 }
 
-#opp {
+h6 {
     color: white;
-    background: #454545;
 }
 
 .columna1 {
