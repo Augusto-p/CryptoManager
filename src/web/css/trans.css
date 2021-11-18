@@ -1,11 +1,9 @@
 #coin {
     background: #454545;
-    color: white;
 }
 
 #opp {
-    box-shadow: 0 0 15px 0 black;
-    color: white;
+    box-shadow: 0 0 10px 0 black;
     background: #1f1f1f;
 }
 
