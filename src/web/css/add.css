@@ -6,6 +6,12 @@ h6 {
     color: white;
 }
 
+button {
+    background: white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 .columna1 {
     width: 30%;
 }
