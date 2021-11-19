@@ -59,8 +59,8 @@ public class monedaDao {
 		} finally {
 			try {
 				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (Exception e2) {
+				// TODO: handle exception
 			}
 		}
 		return listaMonedas;

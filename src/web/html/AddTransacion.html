@@ -17,20 +17,32 @@
 </head>
 
 <body>
-    <form action="">
-        <label for="nik">Nik</label>
-        <input type="text" name="nik" id="nik">
-        <label for="cant">Cantidad</label>
-        <input type="text" name="cant" id="cant">
-        <label for="precT">Precio Total</label>
-        <input type="text" name="precT" id="precT">
-        <h6>Tipo de Operación</h6>
-        <label for=""><br>Compra</label>
-        <input type="radio" name="oper" id="buy" value="Compra" checked>
-        <label for="">Venta</label>
-        <input type="radio" name="oper" id="sell" value="Venta">
-        <button type="submit">Enviar transaccion</button>
-    </form>
+    <div class="baner">
+        <div>
+            <h1>CryptoManager</h1>
+            <h2>Añadir Transaccion</h2>
+        </div>
+    
+    </div>
+    <div id="formdiv">
+        <form action="">
+            <h3 for="nik">Nick:</h3>
+            <input class="InputText" type="text" name="nik" id="nik">
+            <h3 for="cant">Cantidad:</h3>
+            <input class="InputText" type="text" name="cant" id="cant">
+            <h3 for="precT">Precio Total</h3>
+            <input class="InputText" type="text" name="precT" id="precT">
+            <h6>Tipo de Operación:</h6>
+            <h3 for="">Compra</h3>
+            <input class="InputRadio" type="radio" name="oper" id="buy" value="Compra" checked>
+        
+            <h3 for="">Venta</h3>
+            <input class="InputRadio" type="radio" name="oper" id="sell" value="Venta">
+        
+            <button type="submit">Enviar transaccion</button>
+        </form>
+    </div>
+    
 
 </body>
 

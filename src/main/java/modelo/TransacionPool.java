@@ -21,8 +21,7 @@ public class TransacionPool {
 		Connection con=null;
 		try {
 			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			DataSource ds = (DataSource) envCtx.lookup("jdbc/Cryptomanager");
+			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/cryptomanager");
 			con = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();

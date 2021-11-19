@@ -11,15 +11,14 @@ import javax.sql.DataSource;
 import entidades.MonedaEntidad;
 
 public class MonedaPool {
-	@Resource(name = "jdbc/Cryptomanager")
+	@Resource(name = "jdbc/cryptomanager")
 	private DataSource pisina;
 
 	public Connection MonedaPool() {
 		Connection con=null;
 		try {
 			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			DataSource ds = (DataSource) envCtx.lookup("jdbc/Cryptomanager");
+			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/cryptomanager");
 			con = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,14 +30,14 @@ public class MonedaPool {
 		Connection con = this.MonedaPool();
 		ArrayList<MonedaEntidad> listaMonedas = new ArrayList<MonedaEntidad>();
 		try {
-			PreparedStatement ps = con.prepareStatement("select m.nick,m.nombre, m.logo,sum(t.cant_mon * case when tp.nombre =\"compra\" then 1 else -1 end ) as \"Cantidad\",avg(t.prec_tot * case when tp.nombre =\"compra\" then 1 else 0 end /t.cant_mon * case when tp.nombre =\"compra\" then 1 else 0 end ) as \"PPC\" ,avg(t.prec_tot * case when tp.nombre =\"compra\" then 0 else 1 end /t.cant_mon * case when tp.nombre =\"compra\" then 0 else 1 end ) as \"PPV\" from trans as t left join moneda as m on t.nick_mon = m.nick left join tp_trans as tp on t.id_tipo = tp.id_tipo group by nick_mon;");
+			PreparedStatement ps = con.prepareStatement("select m.nick,m.nombre, m.logo,sum(t.cant_mon * case when tp.nombre =\"compra\" then 1 else -1 end ) as \"Cantidad\",avg(t.prec_tot * case when tp.nombre =\"compra\" then 1 else 0 end /t.cant_mon * case when tp.nombre =\"compra\" then 1 else 0 end ) as \"PPC\" ,avg(t.prec_tot * case when tp.nombre =\"compra\" then 0 else 1 end /t.cant_mon * case when tp.nombre =\"compra\" then 0 else 1 end ) as \"PPV\" from trans as t left join moneda as m on t.nick_mon = m.nick left join tp_trans as tp on t.id_tipo = tp.id_tipo group by nick_mon");
 			ResultSet resultado = ps.executeQuery();
 			while (resultado.next()) {
 				String nick = resultado.getString("nick");
 				String name = resultado.getString("nombre");
 				String img = resultado.getString("logo");
 				double Cantidad = resultado.getDouble("Cantidad");
-				double PPC = resultado.getDouble("PPV");
+				double PPC = resultado.getDouble("PPC");
 				double PPV = resultado.getDouble("PPV");
 				MonedaEntidad MonedaDao = new MonedaEntidad(nick, name, img, Cantidad, PPC, PPV);
 				listaMonedas.add(MonedaDao);

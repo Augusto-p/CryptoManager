@@ -1,5 +1,6 @@
-label {
+h3 {
     color: white;
+    font-size: 25px;
 }
 
 h6 {
@@ -12,22 +13,21 @@ button {
     margin-top: 10px;
 }
 
-.columna1 {
-    width: 30%;
+#formdiv{
+    display: flex;
+    margin-top: 20px;
 }
 
-.columna2 {
-    width: 10%;
+form {
+    margin: 0 auto;
+    
 }
-
-.columna3 {
-    width: 10%;
+.InputText {
+    background-color: black;
+    font-size: 30px;
+    border-radius: 10px;
 }
-
-.columna4 {
-    width: 10%;
-}
-
-.columna5 {
-    width: 30%;
+#buy{
+    background-color: red;
+    width: 100px;
 }

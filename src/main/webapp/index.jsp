@@ -8,5 +8,7 @@
 </head>
 <body>
 	 <h1>hello word</h1>
+	<a href="${pageContext.request.contextPath}/ListarMonedas">Monedas</a>
+	<a href="${pageContext.request.contextPath}/ListarTransaciones">Transa</a>
 </body>
 </html>
