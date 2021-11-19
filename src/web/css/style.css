@@ -84,5 +84,29 @@ h1 {
 
 th,
 td {
-    text-align: center;
+    padding: 0px;
+    padding-left: 10px;
+}
+.nameclass{
+    font-size: 35px;
+    color: gray;
+    margin: auto 0;
+    padding-left: 10px;
+}
+td div{
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    display: flex;
+}
+.nickclass{
+    font-size: 20px;
+    padding-top: 10px;
+    color: #00ad5f;
+    margin: auto 0;
+    padding-left: 15px;
+}
+
+.imgclass{
+    width: 50px;
 }
