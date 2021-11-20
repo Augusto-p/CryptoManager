@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 body {
     background: #222;
+}
+
+* {
+    font-family: Caveat;
 }
 
 #coin {
@@ -30,10 +36,10 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    
 }
 
 .baner {
+    font-family: Quicksand;
     display: flex;
     margin-bottom: 5px;
 }
@@ -73,11 +79,13 @@ h1 {
 
 .container-table100 {
     padding-top: 0px;
-    min-height:400px;
+    min-height: 400px;
 }
+
 .wrap-table100 {
     height: 400px;
 }
+
 .table100-body {
     max-height: 415px;
 }
@@ -87,19 +95,22 @@ td {
     padding: 0px;
     padding-left: 10px;
 }
-.nameclass{
+
+.nameclass {
     font-size: 35px;
     color: gray;
     margin: auto 0;
     padding-left: 10px;
 }
-td div{
+
+td div {
     margin: 0;
     padding: 0;
     padding-left: 10px;
     display: flex;
 }
-.nickclass{
+
+.nickclass {
     font-size: 20px;
     padding-top: 10px;
     color: #00ad5f;
@@ -107,6 +118,6 @@ td div{
     padding-left: 15px;
 }
 
-.imgclass{
+.imgclass {
     width: 50px;
 }

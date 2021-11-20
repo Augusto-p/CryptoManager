@@ -162,6 +162,7 @@ table {
 
 th,
 td {
+    font-family: Caveat;
     font-weight: unset;
     padding-right: 10px
 }

@@ -13,20 +13,31 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/add.css">
     <link rel="shortcut icon" href="../css/bitlogo.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <title>CryptoManager</title>
 </head>
 
 <body>
-    <form action="">
-        <label for="nik">Nik</label>
-        <input type="text" name="nik" id="nik">
-        <label for="name">Nombre</label>
-        <input type="text" name="name" id="name">
-        <label for="logo">Logo</label>
-        <input type="file" name="logo" id="logo">
-        <button type="submit">Añadir Moneda</button>
-    </form>
+    <div class="baner">
+        <div>
+            <h1>CryptoManager</h1>
+            <h2>Añadir Moneda</h2>
+        </div>
 
+    </div>
+    <div id="formdiv">
+        <form action="">
+            <h3>Nik:</h3>
+            <input class="InputText" type="text" name="nik" id="nik">
+            <h3>Nombre:</h3>
+            <input class="InputText" type="text" name="name" id="name">
+            <h3>Logo:</h3>
+            <input type="file" name="logo" id="logo">
+            <button type="submit">Añadir Moneda</button>
+        </form>
+    </div>
 </body>
 
 </html>
