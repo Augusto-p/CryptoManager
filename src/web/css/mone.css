@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+#coin {
+    background: #1f1f1f;
+    box-shadow: 0 0 10px 0 black;
+}
+
+#opp {
+    background: #454545;
+}
+
+.columna1 {
+    width: 25%;
+}
+
+.columna2 {
+    width: 15%;
+}
+
+.columna3 {
+    width: 20%;
+}
+
+.columna4 {
+    width: 20%;
+}
+
+.columna5 {
+    width: 20%;
+}

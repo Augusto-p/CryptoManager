@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+h3 {
+    color: white;
+    font-size: 25px;
+    font-family: Quicksand;
+}
+
+h6 {
+    font-family: Quicksand;
+    color: white;
+}
+
+button {
+    background: white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#formdiv {
+    display: flex;
+    margin-top: 20px;
+}
+
+form {
+    margin: 0 auto;
+}
+
+.InputText {
+    background-color: black;
+    font-size: 30px;
+    border-radius: 10px;
+    color: white;
+}
+
+#buy {
+    background-color: red;
+    width: 100px;
+}
+
+#sell {
+    width: 100px;
+}
