@@ -23,10 +23,6 @@
 	<title>Cryptomanager</title>
 </head>
 <body>
-	 
-	 
-</body>
-<body>
 	<div class="baner">
         <div>
             <h1>CryptoManager</h1>

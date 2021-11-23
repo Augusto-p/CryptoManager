@@ -36,24 +36,18 @@ public class scraping {
 	}
 	
 	public String getImagenScraping(String name) throws IOException {
+		String base64 = "";
 		String url = "https://crypto.com/price/"+ name;
 		Document page = Jsoup.connect(url).get();
 		Elements div = page.select("div[class='css-42e2b4']");
 		String img = (div.select("img[src]").get(1)).absUrl("src");
-		try (BufferedInputStream inputStream = new BufferedInputStream(new URL(img).openStream());
-			    FileOutputStream fileOS = new FileOutputStream("src/img/logo.png")) {
-			    byte data[] = new byte[1024];
-				int byteContent;
-				while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
-					fileOS.write(data, 0, byteContent);
-					    }
-		} catch (IOException e) {}
-       
-        String base64 = FuncionesVarias.getbase64img("src/img/logo.png");
+		if (FuncionesVarias.downimage(img, "logo")) {
+			base64 = FuncionesVarias.getbase64img("logo.png");
+		}
         return base64;
 		
 	}
-	
+
 	
 	public String getNameScraping(String NIK) {
 		String url = "https://api.exchange.cryptomkt.com/api/3/public/currency/"+ NIK;

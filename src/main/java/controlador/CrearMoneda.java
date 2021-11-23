@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +19,11 @@ import javax.sql.DataSource;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import entidades.MonedaEntidad;
+import entidades.OperacionEnidad;
 import modelo.Conexion;
 import modelo.FuncionesVarias;
 import modelo.MonedaPool;
+import modelo.TransacionPool;
 import modelo.monedaDao;
 
 /**
@@ -28,7 +32,8 @@ import modelo.monedaDao;
 @WebServlet("/CrearMoneda")
 public class CrearMoneda extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	@Resource(name = "jdbc/cryptomanager")
+	private DataSource pisina;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,16 +55,32 @@ public class CrearMoneda extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Connection con = null;
 		try {
-			MonedaPool poolcoin = new MonedaPool();
+			con = pisina.getConnection();
+			MonedaPool poolcoin = new MonedaPool(pisina);
+			TransacionPool pooltransa = new TransacionPool(pisina);
 			String nick = request.getParameter("nik");
 			String name = request.getParameter("name");
 			String archivo = request.getParameter("logo");
-			MonedaEntidad mone = new MonedaEntidad(nick, name, archivo);
+			String base64 = "";
+			if (FuncionesVarias.downimage(archivo, "./logo")) {
+				base64 = FuncionesVarias.getbase64img("./logo.png");
+			}
+			MonedaEntidad mone = new MonedaEntidad(nick, name, base64);
 			poolcoin.agregarMoneda(mone);
+			ArrayList<OperacionEnidad> transa = pooltransa.obternerListaTransaciones();
+			request.setAttribute("Transa", transa);
+			RequestDispatcher rd = request.getRequestDispatcher("/TablaOperaciones.jsp");
+			rd.forward(request, response);
 		} catch (Exception e) {
-			// TODO: handle exception
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}

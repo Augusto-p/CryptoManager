@@ -29,7 +29,7 @@
         <label for="name">Nombre</label>
         <input type="text" name="name" id="name">
         <label for="logo">Logo</label>
-        <input type="file" name="logo" id="logo">
+        <input type="text" name="logo" id="logo">
         <button type="submit">Añadir Moneda</button>
     </form>
 	 

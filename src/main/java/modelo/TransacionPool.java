@@ -17,40 +17,15 @@ public class TransacionPool {
 	@Resource(name = "jdbc/Cryptomanager")
 	private DataSource pisina;
 
-	public Connection TransacionPool() {
-		Connection con=null;
-		try {
-			Context initCtx = new InitialContext();
-			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/cryptomanager");
-			con = ds.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return con;
-	}
-	
-	public void agregarTrasacion(OperacionEnidad ope) {
-		Connection con = this.TransacionPool();
-		int resultado = -1;
-		try {
-			PreparedStatement ps = con.prepareStatement("insert into trans (id_tipo, fecha, nick_mon, cant_mon, prec_tot) values (?,?, ?, ?, ?);",
-					PreparedStatement.RETURN_GENERATED_KEYS);
-			ps.setString(1, ope.getMode());
-			ps.setString(2, FuncionesVarias.getDateTime());
-			ps.setString(3, ope.getNik());
-			ps.setDouble(4, ope.getCantidad());
-			ps.setDouble(5, ope.getPrice());
-			
-
-		} catch (SQLException e) {
-		} finally {
-		}
+	public TransacionPool(DataSource pisina) {
+		this.pisina = pisina;
 	}
 	public ArrayList<OperacionEnidad> obternerListaTransaciones() {
 		// TODO Auto-generated method stub
-		Connection con = this.TransacionPool();
+		Connection con = null;
 		ArrayList<OperacionEnidad> listaOperaciones = new ArrayList<OperacionEnidad>();
 		try {
+			con = pisina.getConnection();
 			PreparedStatement ps = con.prepareStatement("select t.id_trans as ID, tp.nombre as modo, m.logo, m.nick, m.nombre, t.cant_mon as \"Cantidad\",prec_tot as \"Precio Total\", (prec_tot/cant_mon) as \"Precio Unitario\", fecha from trans as t left join moneda as m on t.nick_mon = m.nick left join tp_trans as tp on t.id_tipo = tp.id_tipo;");
 			ResultSet resultado = ps.executeQuery();
 			while (resultado.next()) {
@@ -72,5 +47,25 @@ public class TransacionPool {
 		}
 		return listaOperaciones;
 	}
+	
+	public void agregarTrasacion(OperacionEnidad ope) {
+		Connection con = null;
+		int resultado = -1;
+		try {
+			con = pisina.getConnection();
+			PreparedStatement ps = con.prepareStatement("insert into trans (id_tipo, fecha, nick_mon, cant_mon, prec_tot) values (?,?, ?, ?, ?);",
+					PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setString(1, ope.getMode());
+			ps.setString(2, FuncionesVarias.getDateTime());
+			ps.setString(3, ope.getNik());
+			ps.setDouble(4, ope.getCantidad());
+			ps.setDouble(5, ope.getPrice());
+			
+
+		} catch (SQLException e) {
+		} finally {
+		}
+	}
+	
 
 }

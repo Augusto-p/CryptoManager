@@ -14,22 +14,15 @@ public class MonedaPool {
 	@Resource(name = "jdbc/cryptomanager")
 	private DataSource pisina;
 
-	public Connection MonedaPool() {
-		Connection con=null;
-		try {
-			Context initCtx = new InitialContext();
-			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/cryptomanager");
-			con = ds.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return con;
+	public MonedaPool(DataSource pisina) {
+		this.pisina = pisina;
 	}
 	
 	public ArrayList<MonedaEntidad> obternerListaMonedas() {
-		Connection con = this.MonedaPool();
+		Connection con = null;
 		ArrayList<MonedaEntidad> listaMonedas = new ArrayList<MonedaEntidad>();
 		try {
+			con = pisina.getConnection();
 			PreparedStatement ps = con.prepareStatement("select m.nick,m.nombre, m.logo,sum(t.cant_mon * case when tp.nombre =\"compra\" then 1 else -1 end ) as \"Cantidad\",avg(t.prec_tot * case when tp.nombre =\"compra\" then 1 else 0 end /t.cant_mon * case when tp.nombre =\"compra\" then 1 else 0 end ) as \"PPC\" ,avg(t.prec_tot * case when tp.nombre =\"compra\" then 0 else 1 end /t.cant_mon * case when tp.nombre =\"compra\" then 0 else 1 end ) as \"PPV\" from trans as t left join moneda as m on t.nick_mon = m.nick left join tp_trans as tp on t.id_tipo = tp.id_tipo group by nick_mon");
 			ResultSet resultado = ps.executeQuery();
 			while (resultado.next()) {
@@ -50,15 +43,27 @@ public class MonedaPool {
 	}
 
 	public void agregarMoneda(MonedaEntidad mone) {
-		Connection con = this.MonedaPool();
+		Connection con = null;
 		try {
-			PreparedStatement ps = con.prepareStatement("insert into moneda (nik, nombre, logo) values(?,?,?)",
+			con = pisina.getConnection();
+			PreparedStatement ps = con.prepareStatement("insert into moneda(nik, nombre, logo) values(?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setString(1, mone.getNik());
 			ps.setString(2, mone.getName());
 			ps.setString(3, mone.getImg());
-			//ps.executeUpdate();
-			ps.executeLargeUpdate();
+			int resultado = ps.executeUpdate();
+			System.out.println(resultado);
+			/*
+			if (ps.executeUpdate() > 0) {
+				// Retrieves any auto-generated keys created as a result of executing this
+				// Statement object
+				java.sql.ResultSet generatedKeys = ps.getGeneratedKeys();
+				if (generatedKeys.next()) {
+					int primkey = generatedKeys.getInt(1);
+					// = primkey;
+				}
+			}*/
+			
 
 
 		} catch (SQLException e) {
