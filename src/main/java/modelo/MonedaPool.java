@@ -51,18 +51,24 @@ public class MonedaPool {
 
 	public void agregarMoneda(MonedaEntidad mone) {
 		Connection con = this.MonedaPool();
-		int resultado = -1;
 		try {
 			PreparedStatement ps = con.prepareStatement("insert into moneda (nik, nombre, logo) values(?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setString(1, mone.getNik());
 			ps.setString(2, mone.getName());
 			ps.setString(3, mone.getImg());
-			
+			//ps.executeUpdate();
+			ps.executeLargeUpdate();
 
 
 		} catch (SQLException e) {
 		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

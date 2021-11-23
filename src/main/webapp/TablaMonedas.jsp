@@ -111,7 +111,7 @@
 	<div class="Botones">
 		<div class="butts">
 			<a id="coin" href="">Monedas</a>
-			<a id="opp" href="${pageContext.request.contextPath}/ListarTransaciones"">Operaciónes</a>
+			<a id="opp" href="${pageContext.request.contextPath}/ListarTransaciones">Operaciónes</a>
 		</div>
 	</div>
 	

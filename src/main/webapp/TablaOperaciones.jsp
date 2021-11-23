@@ -54,7 +54,7 @@
 								%>
       
                                 <tr class="row100 body">
-                                    <td class="cell100 columna1"><%=item.getNombre()%></td>
+                                    <td class="cell100 columna1 <%=item.getMode()%>"><%=item.getNombre()%></td>
                                     <td class="cell100 columna2"><%=item.getCantidad()%></td>
                                     <td class="cell100 columna3"><%=item.getFecha()%></td>
                                     <td class="cell100 columna4"><%=item.getPrice()%></td>
@@ -106,7 +106,7 @@
     <div class="Botones">
         <div class="butts">
             <a id="coin" href="${pageContext.request.contextPath}/ListarMonedas">Monedas</a>
-            <a id="add" href="../html/AddTransacion.html">Añadir</a>
+            <a id="add" href="${pageContext.request.contextPath}/AddMoneda">Añadir</a>
             <a id="opp" href="">Operaciónes</a>
         </div>
     </div>

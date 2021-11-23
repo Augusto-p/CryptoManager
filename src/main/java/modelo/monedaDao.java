@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import entidades.MonedaEntidad;
 
 public class monedaDao {
+	
 	public int agregarMoneda(MonedaEntidad mone) {
 		Connection con = Conexion.getConexion();
 		int resultado = -1;

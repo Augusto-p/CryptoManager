@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
@@ -21,5 +22,8 @@ public class FuncionesVarias {
         String base64 = new String(Base64.getEncoder().encode(FileUtils.readFileToByteArray(image)), "UTF-8");
 		return base64;
 	}
-
+	public static String getbase64imgbite(byte[] bit) throws IOException {
+		String bse = new String(Base64.getEncoder().encode(bit), "UTF-8");
+		return bse;
+	}
 }
