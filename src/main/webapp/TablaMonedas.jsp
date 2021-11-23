@@ -1,3 +1,4 @@
+
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="modelo.*"%>
 <%@page import="entidades.MonedaEntidad"%>
@@ -17,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="CSS/TablaRes/util.css">
 	<link rel="stylesheet" type="text/css" href="CSS/TablaRes/main.css">
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
-	<link rel="stylesheet" href="CSS/mone.css">
+	<link rel="stylesheet" type="text/css" href="CSS/mone.css">
 	<link rel="shortcut icon" href="CSS/bitlogo.ico" />
 	<title>Cryptomanager</title>
 </head>
@@ -57,9 +58,16 @@
 								<%
 									ArrayList<MonedaEntidad> lista = (ArrayList<MonedaEntidad>) request.getAttribute("monedas");
 									for (MonedaEntidad item : lista) {
+										String url = "data:image/png;base64,"+item.getImg();
 								%>
 								<tr class="row100 body">
-									<td class="cell100 columna1"><%=item.getName()%></td>
+									<td class="cell100 columna1">
+										<div>
+                                            <img class="imgclass" src=<%=url %> alt="">
+                                            <span class="nameclass"><%=item.getName()%></span>
+                                            <span class="nickclass"><%=item.getNik()%></span>
+                                        </div>
+                                    </td>
 									<td class="cell100 columna2"><%=item.getCantidad()%></td>
 									<td class="cell100 columna3"><%=item.getPrecio_pro_com()%></td>
 									<td class="cell100 columna4"><%=item.getPrecio_pro_ven()%></td>
