@@ -19,19 +19,27 @@
     <link rel="stylesheet" href="CSS/add.css">
     <link rel="shortcut icon" href="CSS/bitlogo.ico" />
     <title>CryptoManager</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cryptomanager</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/CrearMoneda" method="post">
-        <label for="nik">Nik</label>
-        <input type="text" name="nik" id="nik">
-        <label for="name">Nombre</label>
-        <input type="text" name="name" id="name">
-        <label for="logo">Logo</label>
-        <input type="text" name="logo" id="logo">
-        <button type="submit">Añadir Moneda</button>
-    </form>
+	<div class="baner">
+        <div>
+            <h1>CryptoManager</h1>
+            <h2>Añadir Moneda</h2>
+        </div>
+    </div>
+    <div id="formdiv">
+        <form action="${pageContext.request.contextPath}/CrearMoneda" method="post">
+            <h3>Nik:</h3>
+            <input class="InputText" type="text" name="nik" id="nik">
+            <h3>Nombre:</h3>
+            <input class="InputText" type="text" name="name" id="name">
+            <h3>Logo:</h3>
+            <input class="InputText" type="text" name="logo" id="logo">
+            <button type="submit">Añadir Moneda</button>
+        </form>
+    </div>
 	 
 </body>
 </html>

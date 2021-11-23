@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 body {
     background: #222;
 }
 
-* {
-    font-family: Caveat;
+@font-face {
+    font-family: Lato-Bold;
+    src: url(../fonts/Lato/Lato-Bold.ttf)
 }
 
 #coin {
@@ -122,5 +121,4 @@ td div {
     width: 50px;
     background: none;
     border: none;
-    
 }
