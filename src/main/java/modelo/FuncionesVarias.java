@@ -3,16 +3,14 @@ package modelo;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 
-import org.apache.commons.io.FileUtils;
 
 public class FuncionesVarias {
 	public static String getDateTime() {
@@ -25,15 +23,16 @@ public class FuncionesVarias {
 	
 	
 	public static String getbase64img(String ruta)throws IOException {
-		File image = new File(ruta);
-        String base64 = new String(Base64.getEncoder().encode(FileUtils.readFileToByteArray(image)), "UTF-8");
+		File file = new File("logo.png");
+		BufferedInputStream bufferis = new BufferedInputStream(new FileInputStream(file));
+		int bytes = (int) file.length();
+		byte[] buffer = new byte[bytes];
+		int readBytes = bufferis.read(buffer);
+		bufferis.close();
+		String base64 = new String(Base64.getEncoder().encode(buffer),"UTF-8");
 		return base64;
 	}
-	public static void pathS() {
-		//String a = System.getProperty("user.dir");
-		
-		
-	}
+	
 	public static boolean downimage(String imageUrl, String namefile){
 		boolean r = false;
 		try (BufferedInputStream inputStream = new BufferedInputStream(new URL(imageUrl).openStream());

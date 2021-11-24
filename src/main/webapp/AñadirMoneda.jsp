@@ -1,3 +1,4 @@
+<%@page import="entidades.OperacionEnidad"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="modelo.*"%>
 <%@page import="entidades.MonedaEntidad"%>
@@ -30,11 +31,15 @@
         </div>
     </div>
     <div id="formdiv">
+    	<%
+			OperacionEnidad oprando = (OperacionEnidad) request.getAttribute("Tranacion");
+		%>
         <form action="${pageContext.request.contextPath}/CrearMoneda" method="post">
             <h3>Nik:</h3>
-            <input class="InputText" type="text" name="nik" id="nik">
+            
+            <input class="InputText" type="text" value=<%=oprando.getNik()%> name="nik" id="nik">
             <h3>Nombre:</h3>
-            <input class="InputText" type="text" name="name" id="name">
+            <input class="InputText" type="text" value=<%=oprando.getNombre()%> name="name" id="name">
             <h3>Logo:</h3>
             <input class="InputText" type="text" name="logo" id="logo">
             <button type="submit">Añadir Moneda</button>

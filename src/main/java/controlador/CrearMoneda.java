@@ -1,12 +1,9 @@
 package controlador;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
 import entidades.MonedaEntidad;
 import entidades.OperacionEnidad;
-import modelo.Conexion;
 import modelo.FuncionesVarias;
 import modelo.MonedaPool;
 import modelo.TransacionPool;
-import modelo.monedaDao;
+
 
 /**
  * Servlet implementation class CrearMoneda
@@ -64,11 +57,13 @@ public class CrearMoneda extends HttpServlet {
 			String name = request.getParameter("name");
 			String archivo = request.getParameter("logo");
 			String base64 = "";
-			if (FuncionesVarias.downimage(archivo, "./logo")) {
-				base64 = FuncionesVarias.getbase64img("./logo.png");
-			}
+			if (FuncionesVarias.downimage(archivo, "logo")) {
+				base64 = FuncionesVarias.getbase64img("logo.png");
+			}	
 			MonedaEntidad mone = new MonedaEntidad(nick, name, base64);
 			poolcoin.agregarMoneda(mone);
+			OperacionEnidad opreacion = (OperacionEnidad) request.getAttribute("Tranacion");
+			pooltransa.agregarTrasacion(opreacion);
 			ArrayList<OperacionEnidad> transa = pooltransa.obternerListaTransaciones();
 			request.setAttribute("Transa", transa);
 			RequestDispatcher rd = request.getRequestDispatcher("/TablaOperaciones.jsp");

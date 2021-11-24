@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.naming.Context;
@@ -42,30 +43,19 @@ public class MonedaPool {
 		return listaMonedas;
 	}
 
-	public void agregarMoneda(MonedaEntidad mone) {
+	public boolean agregarMoneda(MonedaEntidad mone) {
+		boolean estado = false;
 		Connection con = null;
+	
 		try {
 			con = pisina.getConnection();
-			PreparedStatement ps = con.prepareStatement("insert into moneda(nik, nombre, logo) values(?,?,?)",
+			PreparedStatement ps = con.prepareStatement("insert into moneda(nick, nombre, logo) values(?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setString(1, mone.getNik());
 			ps.setString(2, mone.getName());
 			ps.setString(3, mone.getImg());
-			int resultado = ps.executeUpdate();
-			System.out.println(resultado);
-			/*
-			if (ps.executeUpdate() > 0) {
-				// Retrieves any auto-generated keys created as a result of executing this
-				// Statement object
-				java.sql.ResultSet generatedKeys = ps.getGeneratedKeys();
-				if (generatedKeys.next()) {
-					int primkey = generatedKeys.getInt(1);
-					// = primkey;
-				}
-			}*/
-			
-
-
+			ps.executeUpdate();
+			estado = true;
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -75,6 +65,28 @@ public class MonedaPool {
 				e.printStackTrace();
 			}
 		}
+		return estado;
+	
 	}
+
+	public boolean existecrypto(String nick) {
+		
+		boolean existe = false;
+		Connection con = null;
+		try {		    
+			con = pisina.getConnection();
+			PreparedStatement ps = con.prepareStatement("select * from moneda where moneda.nick = ? ; ");
+			ps.setString(1, nick);
+			ResultSet rs = ps.executeQuery();
+			existe = rs.next();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return existe;
+		
+	}
+
+	
+
 }
 

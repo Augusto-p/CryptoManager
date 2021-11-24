@@ -1,4 +1,3 @@
-
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="modelo.*"%>
 <%@page import="entidades.MonedaEntidad"%>
@@ -55,6 +54,7 @@
 									ArrayList<MonedaEntidad> lista = (ArrayList<MonedaEntidad>) request.getAttribute("monedas");
 									for (MonedaEntidad item : lista) {
 										String url = "data:image/png;base64,"+item.getImg();
+										String link = request.getContextPath() + "/ListarTransacionesByNick?Nick="  + item.getNik();
 								%>
 								<tr class="row100 body">
 									<td class="cell100 columna1">
@@ -67,7 +67,7 @@
 									<td class="cell100 columna2"><%=item.getCantidad()%></td>
 									<td class="cell100 columna3"><%=item.getPrecio_pro_com()%></td>
 									<td class="cell100 columna4"><%=item.getPrecio_pro_ven()%></td>
-									<td class="cell100 columna5"><%=item.getNik()%></td>
+									<td class="cell100 columna5"><a href="<%=link%>">ver Moneda</a></td>
 								</tr>
 								<%
 									}

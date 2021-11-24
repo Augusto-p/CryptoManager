@@ -28,7 +28,7 @@ public class AddOperacion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/AñadirOperacion.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/AñadirOpreacion.jsp");
 		rd.forward(request, response);
 	}
 
