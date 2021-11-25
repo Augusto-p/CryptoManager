@@ -16,37 +16,45 @@
     <link rel="stylesheet" type="text/css" href="CSS/TablaRes/main.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/add.css">
-    <link rel="shortcut icon" href="../css/bitlogo.ico" />
+    <link rel="stylesheet" href="CSS/addtrans.css">
+    <link rel="shortcut icon" href="CSS/bitlogo.ico" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cryptomanager</title>
 </head>
 <body>
-	<div class="baner">
+    <div class="baner">
         <div>
             <h1>CryptoManager</h1>
-            <h2>Añadir Transaccion</h2>
+            <h2>Añadir Operacion</h2>
         </div>
 
     </div>
     <div id="formdiv">
-        <form action="${pageContext.request.contextPath}/CrearOperacion" method="post">
+        <form action="${pageContext.request.contextPath}/CrearOperacion" method="post" class="formulario">
             <h3 for="nik">Nick:</h3>
-            <input class="InputText" type="text" name="nik" id="nik">
+            <input class="InputText" type="text" name="nik" id="nik" autocomplete="off">
             <h3 for="cant">Cantidad:</h3>
-            <input class="InputText" type="number" name="cant" id="cant">
-            <h3 for="precT">Precio Total</h3>
-            <input class="InputText" type="number" name="precT" id="precT">
+            <input class="InputText" type="number" name="cant" id="cant" autocomplete="off">
+            <h3 for="precT">Precio Total:</h3>
+            <input class="InputText" type="number" name="precT" id="precT" autocomplete="off">
             <h6>Tipo de Operación:</h6>
-            <h3 for="">Compra</h3>
-            <input class="InputRadio" type="radio" name="oper" id="Compra" value="Compra" checked>
-
-            <h3 for="">Venta</h3>
-            <input class="InputRadio" type="radio" name="oper" id="Venta" value="Venta">
-
-            <button type="submit">Enviar transaccion</button>
+            <div class="radio">
+                <input type="radio" name="oper" id="buy" value="Compra" checked>
+                <label for="buy">Compra</label>
+                <input type="radio" name="oper" id="sell" value="Venta">
+                <label for="sell">Venta</label>
+            </div>
+            <button type="submit">Añadir Transaccion</button>
         </form>
     </div>
+    <div class="Botones">
+        <div class="butts">
+            <a id="coin" href="${pageContext.request.contextPath}/ListarMonedas">Monedas</a>
+            <a id="opp" href="${pageContext.request.contextPath}/ListarOperaciones">Operaciónes</a>
+        </div>
+    </div>
 
-	 
+
 </body>
+
 </html>

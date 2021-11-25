@@ -1,19 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@font-face {
+    font-family: Lato-Regular;
+    src: url(../fonts/Lato/Lato-Regular.ttf)
+}
 h3 {
     color: white;
     font-size: 25px;
-    font-family: Quicksand;
+    font-family: Lato-Regular;
+    margin-top: 4px;
 }
 
 h6 {
-    font-family: Quicksand;
+    font-family: lato-regular;
     color: white;
+    font-size: 15px;
+    margin-top: 4px;
 }
 
 button {
-    background: white;
-    border-radius: 5px;
+    background: #00ab5f;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
     margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #formdiv {
@@ -23,6 +36,15 @@ button {
 
 form {
     margin: 0 auto;
+    margin-top: 10px;
+    background-color: #222;
+    padding: 25px;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: solid;
+    box-shadow: 0 0 40px 0 rgb(0 0 0 / 20%);
+    text-align: center;
+    padding-bottom: 35px;
 }
 
 .InputText {
@@ -32,11 +54,8 @@ form {
     color: white;
 }
 
-#buy {
-    background-color: red;
-    width: 100px;
-}
-
-#sell {
-    width: 100px;
+.butts a {
+    border: none;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 15%);
+    
 }

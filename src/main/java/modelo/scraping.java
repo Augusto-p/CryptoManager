@@ -10,10 +10,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Base64;
 
+import javax.swing.JSlider;
+
 import org.apache.commons.io.FileUtils;
-import org.json.JSONObject;
+import org.json.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -33,14 +36,25 @@ public class Scraping {
 	}
 	
 	public static String getImagenScraping(String name) throws IOException {
-		String base64 = "";
-		String url = "https://crypto.com/price/"+ name;
-		Document page = Jsoup.connect(url).get();
-		Elements div = page.select("div[class='css-42e2b4']");
-		String img = (div.select("img[src]").get(1)).absUrl("src");
-		if (FuncionesVarias.downimage(img, "logo")) {
-			base64 = FuncionesVarias.getbase64img("logo.png");
+		String base64 = "NOIMG";
+		String url = "https://crypto.com/price/"+ name.toLowerCase();
+		String page;
+		try {
+			page = returnHttpGet(url);
+			String page0 = page.split("<div class=\"css-42e2b4\">")[1];
+			String page1 = page0.split("</noscript>")[0];
+			String page2 = page1.split("<noscript>")[1];
+			String page3 = page2.split(" src=\"")[1];
+			String page4 = page3.split("\" decoding=")[0];
+			String page5 = page4.replaceAll("&amp;", "&");
+			String img = "https://crypto.com"+page5;
+			if (FuncionesVarias.downimage(img, "logo")) {
+				base64 = FuncionesVarias.getbase64img();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
         return base64;
 		
 	}
@@ -50,10 +64,12 @@ public class Scraping {
 		String url = "https://api.exchange.cryptomkt.com/api/3/public/currency/"+ NIK;
 		String name = "ERROR";
 		try {
-			String r = returnHttpGet(url);
-			JSONObject j = new JSONObject(r);
-			name = j.get("full_name").toString();
+			String a = returnHttpGet(url);
+			String b = a.split(",")[0];
+			String c = b.split(":")[1];
+			name = c.replace("\"", "");
 		} catch (Exception e) {
+			;
 		}
 		
 		return name;

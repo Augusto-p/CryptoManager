@@ -18,33 +18,44 @@
     <link rel="stylesheet" type="text/css" href="CSS/TablaRes/main.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/add.css">
+    <link rel="stylesheet" href="CSS/addmone.css">
     <link rel="shortcut icon" href="CSS/bitlogo.ico" />
+    <script src="js/main.js"></script>
     <title>CryptoManager</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 </head>
 <body>
-	<div class="baner">
+    <div class="baner">
         <div>
             <h1>CryptoManager</h1>
             <h2>Añadir Moneda</h2>
         </div>
+
     </div>
     <div id="formdiv">
     	<%
 			OperacionEnidad oprando = (OperacionEnidad) request.getAttribute("Tranacion");
 		%>
         <form action="${pageContext.request.contextPath}/CrearMoneda" method="post">
+
             <h3>Nik:</h3>
-            
-            <input class="InputText" type="text" value=<%=oprando.getNik()%> name="nik" id="nik">
+            <input class="InputText" type="text" value=<%=oprando.getNik()%> name="nik" id="nik" autocomplete="off">
             <h3>Nombre:</h3>
-            <input class="InputText" type="text" value=<%=oprando.getNombre()%> name="name" id="name">
-            <h3>Logo:</h3>
-            <input class="InputText" type="text" name="logo" id="logo">
+            <input class="InputText" type="text" name="name" value=<%=oprando.getNombre()%> id="name" autocomplete="off">
+            <h3>URL de Logo:</h3>
+            <input class="InputText" type="text" name="logo" id="logo" autocomplete="off" onchange="isImage()">
+            <h6 id="valid">Imagen no valida</h6>
+            
             <button type="submit">Añadir Moneda</button>
         </form>
     </div>
-	 
+    <div class="Botones">
+        <div class="butts">
+            <a id="coin" href="${pageContext.request.contextPath}/ListarMonedas">Monedas</a>
+            <a id="opp" href="${pageContext.request.contextPath}/ListarTransaciones">Operaciónes</a>
+        </div>
+    </div>
 </body>
+
 </html>

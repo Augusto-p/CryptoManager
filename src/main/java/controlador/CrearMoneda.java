@@ -58,7 +58,7 @@ public class CrearMoneda extends HttpServlet {
 			String archivo = request.getParameter("logo");
 			String base64 = "";
 			if (FuncionesVarias.downimage(archivo, "logo")) {
-				base64 = FuncionesVarias.getbase64img("logo.png");
+				base64 = FuncionesVarias.getbase64img();
 			}	
 			MonedaEntidad mone = new MonedaEntidad(nick, name, base64);
 			poolcoin.agregarMoneda(mone);

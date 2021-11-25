@@ -11,8 +11,10 @@
     <link rel="stylesheet" type="text/css" href="../TablaRes/util.css">
     <link rel="stylesheet" type="text/css" href="../TablaRes/main.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../scs/add.css">
+    <link rel="stylesheet" href="../css/add.css">
+    <link rel="stylesheet" href="../css/addmone.css">
     <link rel="shortcut icon" href="../css/bitlogo.ico" />
+    <script src="../js/main.js"></script>
     <title>CryptoManager</title>
 </head>
 
@@ -25,15 +27,23 @@
 
     </div>
     <div id="formdiv">
-        <form action="">
+        <form action="" class="formulario">
             <h3>Nik:</h3>
-            <input class="InputText" type="text" name="nik" id="nik">
+            <input class="InputText" type="text" name="nik" id="nik" autocomplete="off">
             <h3>Nombre:</h3>
-            <input class="InputText" type="text" name="name" id="name">
-            <h3>Logo:</h3>
-            <input type="file" name="logo" id="logo">
+            <input class="InputText" type="text" name="name" id="name" autocomplete="off">
+            <h3>URL de Logo:</h3>
+            <input class="InputText" type="text" name="logo" id="logo" autocomplete="off" onchange="isImage()">
+            <h6 id="valid">Imagen no valida</h6>
+            
             <button type="submit">Añadir Moneda</button>
         </form>
+    </div>
+    <div class="Botones">
+        <div class="butts">
+            <a id="coin" href="">Monedas</a>
+            <a id="opp" href="Transacciones.html">Operaciónes</a>
+        </div>
     </div>
 </body>
 

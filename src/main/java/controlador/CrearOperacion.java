@@ -67,6 +67,7 @@ public class CrearOperacion extends HttpServlet {
 			}else {
 				MonedaEntidad crypto = Scraping.getdataScraping(nick);
 				if(crypto.getName() != "ERROR" && crypto.getImg() != "NOIMG") {
+					poolmone.agregarMoneda(crypto);
 					pooltran.agregarTrasacion(tran);
 					ArrayList<OperacionEnidad> transa = pooltran.obternerListaTransaciones();
 					request.setAttribute("Transa", transa);
@@ -76,6 +77,7 @@ public class CrearOperacion extends HttpServlet {
 					crypto.setImg("");
 					if(crypto.getName().equals("ERROR")) {crypto.setName("");}
 					request.setAttribute("Tranacion", tran);
+					
 					RequestDispatcher rd = request.getRequestDispatcher("/AñadirMoneda.jsp");
 					rd.forward(request, response);
 				}

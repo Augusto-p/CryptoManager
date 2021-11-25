@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../TablaRes/main.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/add.css">
+    <link rel="stylesheet" href="../css/addtrans.css">
     <link rel="shortcut icon" href="../css/bitlogo.ico" />
 
     <title>CryptoManager</title>
@@ -26,22 +27,28 @@
 
     </div>
     <div id="formdiv">
-        <form action="">
+        <form action="" class="formulario">
             <h3 for="nik">Nick:</h3>
-            <input class="InputText" type="text" name="nik" id="nik">
+            <input class="InputText" type="text" name="nik" id="nik" autocomplete="off">
             <h3 for="cant">Cantidad:</h3>
-            <input class="InputText" type="text" name="cant" id="cant">
-            <h3 for="precT">Precio Total</h3>
-            <input class="InputText" type="text" name="precT" id="precT">
+            <input class="InputText" type="text" name="cant" id="cant" autocomplete="off">
+            <h3 for="precT">Precio Total:</h3>
+            <input class="InputText" type="text" name="precT" id="precT" autocomplete="off">
             <h6>Tipo de Operación:</h6>
-            <h3 for="">Compra</h3>
-            <input class="InputRadio" type="radio" name="oper" id="buy" value="Compra" checked>
-
-            <h3 for="">Venta</h3>
-            <input class="InputRadio" type="radio" name="oper" id="sell" value="Venta">
-
-            <button type="submit">Enviar transaccion</button>
+            <div class="radio">
+                <input type="radio" name="oper" id="buy" value="Compra" checked>
+                <label for="buy">Compra</label>
+                <input type="radio" name="oper" id="sell" value="Venta">
+                <label for="sell">Venta</label>
+            </div>
+            <button type="submit">Añadir Transaccion</button>
         </form>
+    </div>
+    <div class="Botones">
+        <div class="butts">
+            <a id="coin" href="">Monedas</a>
+            <a id="opp" href="Transacciones.html">Operaciónes</a>
+        </div>
     </div>
 
 

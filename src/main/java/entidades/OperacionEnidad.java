@@ -66,7 +66,7 @@ public class OperacionEnidad {
 	}
 
 	public String getNik() {
-		return nik;
+		return nik.toUpperCase();
 	}
 
 	public void setNik(String nik) {

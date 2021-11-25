@@ -42,7 +42,7 @@
 									<th class="cell100 columna2">Cantidad</th>
 									<th class="cell100 columna3">Precio Promedio de Compra</th>
 									<th class="cell100 columna4">Precio Promedio de Venta</th>
-									<th class="cell100 columna5">no se ya se me me ocurrira algo</th>
+									<th class="cell100 columna5">Ver Transacciones</th>
 								</tr>
 							</thead>
 						</table>
@@ -67,7 +67,7 @@
 									<td class="cell100 columna2"><%=item.getCantidad()%></td>
 									<td class="cell100 columna3"><%=item.getPrecio_pro_com()%></td>
 									<td class="cell100 columna4"><%=item.getPrecio_pro_ven()%></td>
-									<td class="cell100 columna5"><a href="<%=link%>">ver Moneda</a></td>
+									<td class="cell100 columna5"><button href="<%=link%>" class="VertransbyNick">Ver Transacciones</button></td>
 								</tr>
 								<%
 									}
@@ -84,12 +84,12 @@
 				</div>
 			</div>
 		</div>
-		<script src="../TablaRes/jquery-3.2.1.min.js.descarga"></script>
-		<script src="../TablaRes/popper.js.descarga"></script>
-		<script src="../TablaRes/bootstrap.min.js.descarga"></script>
-		<script src="../TablaRes/select2.min.js.descarga"></script>
-		<script async="" src="../TablaRes/js"></script>
-		<script src="../TablaRes/perfect-scrollbar.min.js.descarga"></script>
+		<script src="CSS/TablaRes/jquery-3.2.1.min.js.descarga"></script>
+		<script src="CSS/TablaRes/popper.js.descarga"></script>
+		<script src="CSS/TablaRes/bootstrap.min.js.descarga"></script>
+		<script src="CSS/TablaRes/select2.min.js.descarga"></script>
+		<script async="" src="CSS/TablaRes/js"></script>
+		<script src="CSS/TablaRes/perfect-scrollbar.min.js.descarga"></script>
 		<script>
 			$('.js-pscroll').each(function () {
 				var ps = new PerfectScrollbar(this);
@@ -106,8 +106,8 @@
 
 			gtag('config', 'UA-23581568-13');
 		</script>
-		<script src="../TablaRes/main.js.descarga"></script>
-		<script defer="" src="../TablaRes/beacon.min.js.descarga"
+		<script src="CSS/TablaRes/main.js.descarga"></script>
+		<script defer="" src="CSS/TablaRes/beacon.min.js.descarga"
 			data-cf-beacon="{&quot;rayId&quot;:&quot;6af42311b920d7d9&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2021.11.0&quot;,&quot;si&quot;:100}"
 			crossorigin="anonymous"></script>
 	</div>

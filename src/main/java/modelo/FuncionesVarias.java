@@ -22,7 +22,7 @@ public class FuncionesVarias {
 	
 	
 	
-	public static String getbase64img(String ruta)throws IOException {
+	public static String getbase64img()throws IOException {
 		File file = new File("logo.png");
 		BufferedInputStream bufferis = new BufferedInputStream(new FileInputStream(file));
 		int bytes = (int) file.length();

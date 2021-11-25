@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 #coin {
-    background: #454545;
+    background: #1f1f1f;
 }
 
 #opp {
     box-shadow: 0 0 10px 0 black;
-    background: #1f1f1f;
+    background: #454545;
 }
 
 .columna1 {
@@ -26,4 +26,7 @@
 
 .columna5 {
     width: 30%;
+}
+.Venta{
+	color: #AB005F;
 }

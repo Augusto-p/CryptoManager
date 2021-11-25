@@ -49,7 +49,7 @@ public class MonedaEntidad {
 
 
 	public String getNik() {
-		return nik;
+		return nik.toUpperCase();
 	}
 
 	public void setNik(String nik) {
