@@ -56,14 +56,16 @@ public class CrearMoneda extends HttpServlet {
 			String nick = request.getParameter("nik");
 			String name = request.getParameter("name");
 			String archivo = request.getParameter("logo");
+			double cantidad = Double.valueOf(request.getParameter("cantidad"));
+			double precio = Double.valueOf(request.getParameter("precio"));
+			String mode = request.getParameter("mode");
 			String base64 = "";
-			if (FuncionesVarias.downimage(archivo, "logo")) {
-				base64 = FuncionesVarias.getbase64img();
-			}	
+			FuncionesVarias.downimage(archivo, "logo");
+			base64 = FuncionesVarias.getbase64img();
 			MonedaEntidad mone = new MonedaEntidad(nick, name, base64);
 			poolcoin.agregarMoneda(mone);
-			OperacionEnidad opreacion = (OperacionEnidad) request.getAttribute("Tranacion");
-			pooltransa.agregarTrasacion(opreacion);
+			OperacionEnidad oprando = new OperacionEnidad(nick, cantidad, precio, mode);
+			pooltransa.agregarTrasacion(oprando);
 			ArrayList<OperacionEnidad> transa = pooltransa.obternerListaTransaciones();
 			request.setAttribute("Transa", transa);
 			RequestDispatcher rd = request.getRequestDispatcher("/TablaOperaciones.jsp");

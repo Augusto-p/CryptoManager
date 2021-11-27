@@ -36,6 +36,7 @@
     <div id="formdiv">
     	<%
 			OperacionEnidad oprando = (OperacionEnidad) request.getAttribute("Tranacion");
+    		
 		%>
         <form action="${pageContext.request.contextPath}/CrearMoneda" method="post">
 
@@ -46,7 +47,9 @@
             <h3>URL de Logo:</h3>
             <input class="InputText" type="text" name="logo" id="logo" autocomplete="off" onchange="isImage()">
             <h6 id="valid">Imagen no valida</h6>
-            
+            <input class="casper" type="text" name="cantidad" value=<%=oprando.getCantidad()%>>
+            <input class="casper" type="text" name="precio" value=<%=oprando.getPrice()%>>
+            <input class="casper" type="text" name="mode" value=<%=oprando.getMode()%>>
             <button type="submit">Añadir Moneda</button>
         </form>
     </div>
