@@ -50,7 +50,7 @@
     <div class="Botones">
         <div class="butts">
             <a id="coin" href="${pageContext.request.contextPath}/ListarMonedas">Monedas</a>
-            <a id="opp" href="${pageContext.request.contextPath}/ListarOperaciones">Operaciónes</a>
+            <a id="opp" href="${pageContext.request.contextPath}/ListarTransaciones">Operaciónes</a>
         </div>
     </div>
 

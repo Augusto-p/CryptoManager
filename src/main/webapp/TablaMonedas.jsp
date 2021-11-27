@@ -67,7 +67,7 @@
 									<td class="cell100 columna2"><%=item.getCantidad()%></td>
 									<td class="cell100 columna3"><%=item.getPrecio_pro_com()%></td>
 									<td class="cell100 columna4"><%=item.getPrecio_pro_ven()%></td>
-									<td class="cell100 columna5"><button href="<%=link%>" class="VertransbyNick">Ver Transacciones</button></td>
+									<td class="cell100 columna5"><a href="<%=link%>" class="VertransbyNick">Ver Transacciones</a></td>
 								</tr>
 								<%
 									}
